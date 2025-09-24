@@ -182,6 +182,11 @@
                 planetEl.style.height = `${planet.size}px`;
                 planetEl.style.backgroundColor = planet.color;
                 planetEl.style.animation = `orbit ${planet.speed}s linear infinite`;
+                // center the planet element so transforms orbit around the center
+                planetEl.style.left = '50%';
+                planetEl.style.top = '50%';
+                planetEl.style.position = 'absolute';
+                planetEl.style.transformOrigin = '50% 50%';
 
                 // Texto al hacer hover
                 const hoverText = document.createElement('div');
@@ -205,12 +210,12 @@
                 // initial transform will be set by adjustOrbits
             });
             
-            // Añadir animación de órbita
+            // Añadir animación de órbita (preserva el centrado translate(-50%,-50%))
             const style = document.createElement('style');
             style.textContent = `
                 @keyframes orbit {
-                    0% { transform: rotate(0deg) translateX(var(--orbit-radius)) rotate(0deg); }
-                    100% { transform: rotate(360deg) translateX(var(--orbit-radius)) rotate(-360deg); }
+                    0% { transform: translate(-50%,-50%) rotate(0deg) translateX(var(--orbit-radius)) rotate(0deg); }
+                    100% { transform: translate(-50%,-50%) rotate(360deg) translateX(var(--orbit-radius)) rotate(-360deg); }
                 }
             `;
             document.head.appendChild(style);
@@ -370,8 +375,8 @@
                 // update CSS variable used by the orbit keyframes
                 planet.style.setProperty('--orbit-radius', `${radius}px`);
 
-                // update initial transform using stored angle
+                // update initial transform using stored angle (centered)
                 const angle = parseFloat(planet.dataset.angle || 0);
-                planet.style.transform = `rotate(${angle}deg) translate(${radius}px) rotate(-${angle}deg)`;
+                planet.style.transform = `translate(-50%,-50%) rotate(${angle}deg) translateX(${radius}px) rotate(-${angle}deg)`;
             });
         }
