@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Solar Damxi</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+    
+
+    <div class="solar-system" id="solar-system">
+        <div class="sun">
+            <div class="sun-core">
+                <!-- Imagen centrada dentro del sol. Reemplaza la ruta por tu archivo. -->
+                <div class="sun-image">
+                    <img src="dam.jpeg" alt="Foto central">
+                </div>
+            </div>
+            <!-- Corazoncitos flotantes alrededor (manteniendo estilo de tu galaxia original) -->
+            <div class="mini-heart" style="left:-50px; top:18px; animation-delay:0s;">❤</div>
+            <div class="mini-heart" style="left:36px; top:-46px; animation-delay:0.6s;">❤</div>
+            <div class="mini-heart" style="left:80px; top:30px; animation-delay:1.2s;">❤</div>
+            <div class="mini-heart" style="left:-10px; top:-78px; animation-delay:1.8s;">❤</div>
+        </div>
+        
+        <div id="orbits-container"></div>
+        <div id="floating-phrases"></div>
+    </div>
+    
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <button class="modal-close" id="modal-close">&times;</button>
+            <p id="modal-text"></p>
+        </div>
+    </div>
+
+    <div class="zoom-controls">
+        <button class="zoom-btn" id="zoom-in">+</button>
+        <button class="zoom-btn" id="zoom-out">-</button>
+    </div>
+    
+    <div class="zoom-level" id="zoom-level">Zoom: 100%</div>
+
+    <script src="script.js"></script>
+</body>
+</html>
